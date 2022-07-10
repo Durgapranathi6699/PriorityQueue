@@ -1,0 +1,20 @@
+class SmallestInfiniteSet {
+  
+     Queue<Integer> q =new PriorityQueue<>();//min heap
+    
+    public SmallestInfiniteSet() {
+     for(int i=1;i<=1000;i++){
+         q.offer(i);
+        }
+    }
+    
+    public int popSmallest() {
+        return q.poll();
+    }
+    
+    public void addBack(int num) {
+        if(!q.contains(num))
+          q.offer(num);
+      
+    }
+}
