@@ -1,0 +1,39 @@
+class Solution {
+    public int minimumDeviation(int[] nums) {
+       int min=Integer.MAX_VALUE;
+      PriorityQueue<Integer> pq=new PriorityQueue<>(Collections.reverseOrder());//max heap
+       for(int i=0;i<nums.length;i++){
+           if(nums[i]%2==1){ //for odd number
+               nums[i]=nums[i]*2;
+               pq.add(nums[i]);}
+              else{
+                   pq.add(nums[i]);
+               }
+             min=Math.min(min,nums[i]);
+           
+       } 
+         int ans=Integer.MAX_VALUE;
+      while(true ){
+          //continue till top of proirityqueue becomes odd
+          //caluculate minimum deviation
+          int max=pq.poll();
+          ans=Math.min(ans,max-min);//deviation
+          if(max%2==1){// top becomes odd
+              break;
+          }
+          //if our max is even we are going to decrese the max so max becomes half
+          max=max/2; //as max element is even 
+          min=Math.min(min,max);//increasing min value
+          pq.add(max);
+          
+      }
+     return ans;//minimum deviation
+    }
+}
+  
+
+  //we are decreasing the max vaue 
+  //and incresing the min vaue
+
+
+
